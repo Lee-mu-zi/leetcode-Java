@@ -5,10 +5,11 @@ public class Main {
     public static void main(String[] args) {
         StringBuilder stringBuilder = new StringBuilder("Hello");
         StringBuilder delete = stringBuilder.delete(0, 3);
-        delete.toString()
+        delete.toString();
         System.out.println(delete);
     }
 }
+
 
 class Solution {
     public boolean checkTree(TreeNode root) {
