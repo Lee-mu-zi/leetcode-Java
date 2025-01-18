@@ -1,32 +1,33 @@
-
-import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
-        StringBuilder stringBuilder = new StringBuilder("Hello");
-        StringBuilder delete = stringBuilder.delete(0, 3);
-        delete.toString();
-        System.out.println(delete);
+        int[] root = {10, 4, 6};
+        Solution solution = new Solution();
     }
 }
 
 
 class Solution {
     public boolean checkTree(TreeNode root) {
+        return root.val == root.left.val + root.right.val;
 
-        return true;
     }
 }
 
-class TreeNode {
+ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
     }
-}
+    }
