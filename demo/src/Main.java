@@ -1,11 +1,13 @@
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        HashSet<Integer> integers = new HashSet<>();
-        boolean add = integers.add(1);
-        boolean add1 = integers.add(1);
-        System.out.println(add);
-        System.out.println(add1);
+
+        int nums[] = {1,3,2,1,5,4};
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        Integer i = list.get(3);
+        System.out.println(i);
     }
 }
