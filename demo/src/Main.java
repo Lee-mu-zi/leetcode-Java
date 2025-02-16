@@ -1,13 +1,12 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
 
-        int nums[] = {1,3,2,1,5,4};
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        Integer i = list.get(3);
-        System.out.println(i);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(1, 5);
+        map.merge(1,-2,(a,b)->a+b);
+
+        System.out.println(map);
     }
 }
