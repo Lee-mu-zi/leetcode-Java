@@ -1,12 +1,14 @@
-import java.util.HashMap;
+import java.util.ArrayDeque;
 
 public class Main {
     public static void main(String[] args) {
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(1, 5);
-        map.merge(1,-2,(a,b)->a+b);
 
-        System.out.println(map);
+        ArrayDeque<String> integers = new ArrayDeque<>();
+        integers.add("hello");
+        integers.add("world");
+        System.out.println(integers);
+        integers.pop();
+        System.out.println(integers);
     }
 }
