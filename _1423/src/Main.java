@@ -13,19 +13,6 @@ public class Main {
 
 class Solution {
     public int maxScore(int[] cardPoints, int k) {
-        int sum = 0;
-        int left = 0, right = cardPoints.length - 1;
-        while (left < right && k != 0) {
-            if (cardPoints[left] < cardPoints[right]) {
-                sum += cardPoints[right];
-                right--;
-                k--;
-            } else {
-                sum += cardPoints[left];
-                left++;
-                k--;
-            }
-        }
-        return sum;
+        return 0;
     }
 }

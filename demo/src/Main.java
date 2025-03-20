@@ -1,17 +1,9 @@
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        Set<Character> set = new HashSet<>();
-        String words[] = {"dcedceadceceaeddcedc", "dddcebcedcdbaeaaaeab", "eecbeddbddeadcbbbdbb", "decbcbebbddceacdeadd", "ccbddbaedcadedbcaaae", "dddcaadaceaedcdceedd", "bbeddbcbbccddcaceeea", "bdabacbbdadabbbddaea"};
-        for (int i = 0; i < words.length; i++) {
-            for (int j = 0; j < words[i].length(); j++) {
-                char c = words[i].charAt(j);
-                set.add(c);
-            }
-            System.out.println("第" + i + "个Set数组是:  " + set);
-        }
+        int nums[] = {996021492,996021492,973489433,66259330,554129007,713784351,646092981,328987029,469368828,685679486,66259330,165954500,731567840,595800464,552439059,14673238,157622945,521321042,386913607,733723177,330475939,462727944,69696035,958945846,648914457,627088742,363551051,50748590,400980660,674779765,439950964,613843311,385212079,725525766,813504429,385212079,66563232,578031878,935017574,554725813,456892672,245308625,626768145,270964388,554725813,768296675,676923124,939689721,115905765,625193590,717796816,27972217,277242430,768296675,480860474,659230631,570682291,601689140,955632265,767424000,251696645,675750691,767424000,251696645,767424000,675750691,675750691,251696645};
 
     }
 }
