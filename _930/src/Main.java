@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @Author 李Muzi
@@ -7,37 +7,29 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        String[] queries = {"bbb","cc"}, words = {"a","aa","aaa","aaaa"};
-        int[] ints = new Solution().numSmallerByFrequency(queries, words);
-        for (int anInt : ints) {
-            System.out.println(anInt);
-        }
+        int nums[] = {1,0,1,0,1}, goal = 2;
+        int i = new Solution().numSubarraysWithSum(nums, goal);
+        System.out.println(i);
     }
 }
 
 class Solution {
-    public int[] numSmallerByFrequency(String[] queries, String[] words) {
-        int len = queries.length;
-        int[] ans = new int[len];
-        for (int i = 0; i < len; i++) {
-            int minQue = getMin(queries[i]);
-            for (int j = 0; j < words.length; j++) {
-                int minWor = getMin(words[j]);
-                if (minQue < minWor) {
-                    ans[i]++;
-                }
-            }
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        // 前缀和 哈希表 枚举右维护左
+        int n = nums.length;
+        // 数组全部子数组有 n * (n + 1) / 2个
+        int[] preSum = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            preSum[i + 1] = preSum[i] + nums[i];
         }
-        return ans;
-    }
-
-    public int getMin(String str) {
-        char[] array = str.toCharArray();
-        Arrays.sort(array);
         int ans = 0;
-        for (char c : array) {
-            if (c == array[0]) ans++;
-            else return ans;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            int rightSum = preSum[i + 1];
+            int leftSum = rightSum - goal;
+            ans += map.getOrDefault(leftSum, 0);
+            map.put(rightSum, map.getOrDefault(rightSum, 0) + 1);
         }
         return ans;
     }

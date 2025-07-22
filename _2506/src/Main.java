@@ -1,7 +1,5 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author 李Muzi
@@ -18,12 +16,17 @@ public class Main {
 
 class Solution {
     public int similarPairs(String[] words) {
-        int count = 0;
-        Set<Set<Integer>> set = new HashSet<>();
-        for (int i = 0; i < words.length; i++) {
-            Set<Integer> collect = Arrays.stream(words[i].chars().toArray()).boxed().collect(Collectors.toSet());
-            if(!set.add(collect)) count++;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        int ans = 0;
+        for (String s : words) {
+            int mask = 0; // 初始化一个空的集合
+            for (char c : s.toCharArray()) {
+                mask |= 1 << (c - 'a'); // 把 c 加到集合中
+            }
+            int c = cnt.getOrDefault(mask, 0);
+            ans += c;
+            cnt.put(mask, c + 1);
         }
-        return set.size() == 1 ? count + 1 : count;
+        return ans;
     }
 }
