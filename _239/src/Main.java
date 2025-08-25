@@ -1,10 +1,8 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.PriorityQueue;
 
 public class Main {
     public static void main(String[] args) {
-        int nums[] = {7,2,4}, k = 2;
+        int nums[] = {1,3,-1,-3,5,3,6,7}, k = 3;
         int[] ints = new Solution().maxSlidingWindow(nums, k);
         for (int anInt : ints) {
             System.out.println(anInt);
@@ -14,24 +12,16 @@ public class Main {
 
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        List<Integer> list = new ArrayList<>();
-        // 创建队列
-        ArrayDeque<Integer> integers = new ArrayDeque<>();
-        int max = Integer.MIN_VALUE;
-        for (int num : nums) {
-            integers.offer(num);
-            max = Math.max(num, max);
-            if (integers.size() == k) {
-                list.add(max);
-                int first = integers.removeFirst();
-                // 如果num > max
-                if(num >= max) {
-                    max = num;
-                } else {
-
-                }
+        int[] ans = new int[nums.length - k + 1];
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
+        for (int i = 0, temp = 0; i < nums.length; i++) {
+            queue.offer(nums[i]);
+            if (queue.size() == k) {
+                ans[temp] = queue.peek();
+                temp++;
+                queue.remove(nums[i - k + 1]);
             }
         }
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        return ans;
     }
 }

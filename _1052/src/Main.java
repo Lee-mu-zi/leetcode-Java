@@ -13,6 +13,19 @@ public class Main {
 
 class Solution {
     public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
-
+        int sum = 0;
+        for (int i = 0; i < grumpy.length; i++) {
+            if(grumpy[i] == 0) sum += customers[i];
+        }
+        int s1 = 0;
+        int maxS1 = 0;
+        for (int i = 0; i < grumpy.length; i++) {
+            if(grumpy[i] == 1) s1 += customers[i];
+            if(i < minutes) continue;
+            maxS1 = Math.max(s1, maxS1);
+            // 更改s1
+            if(grumpy[i - minutes + 1] == 1) s1 -= customers[i - minutes + 1];
+        }
+        return sum + maxS1;
     }
 }
